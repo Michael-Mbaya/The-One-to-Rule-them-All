@@ -19,8 +19,8 @@ import butterknife.ButterKnife;
 
 public class CharactersActivity extends AppCompatActivity {
 
-    String[] names = new String[]{"xy","xy","xy","xy"};
-    String[] races = new String[]{"z","z","z","z"};     //Am not Racist
+    String[] names = new String[]{"xy","xy","xy","xy","xy","xy","xy","xy","xy","xy"};
+    String[] races = new String[]{"z","z","z","z","z","z","z","z","z","z"};     // #JoynerLucas - I'm Not Racist
 
     @BindView(R.id.welcomeTextView) TextView mWelcomeName;
     @BindView(R.id.charactersList) ListView mList;
