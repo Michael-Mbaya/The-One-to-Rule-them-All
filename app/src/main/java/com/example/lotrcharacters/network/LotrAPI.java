@@ -10,9 +10,9 @@ import retrofit2.http.Query;
 public interface LotrAPI {
 
     @GET("character")
-    Call<MyPreciousResponse> getBeers(
-            @Query("limit") String limit,
-            @Query("sort") String sorting
+    Call<MyPreciousResponse> getCharacters(
+//            @Query("limit") String limit,
+//            @Query("sort") String sorting
 //            sort=name:asc
 //            limit
     );

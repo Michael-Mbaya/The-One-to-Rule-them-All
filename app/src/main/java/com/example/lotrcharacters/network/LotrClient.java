@@ -9,6 +9,7 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.example.lotrcharacters.BuildConfig.LOTR_AUTH_KEY;
 import static com.example.lotrcharacters.Constants.LOTR_BASE_URL;
 
 public class LotrClient {
@@ -23,7 +24,7 @@ public class LotrClient {
                         @Override
                         public Response intercept(Chain chain) throws IOException {
                             Request newRequest  = chain.request().newBuilder()
-                                    .addHeader("Authorization", LOTR_BASE_URL) //from Constants(which gets from gradle Build Files)
+                                    .addHeader("Authorization", LOTR_AUTH_KEY) //from Constants(which gets from gradle Build Files)
                                     .addHeader("Access-Control-Allow-Origin","*")
                                     .addHeader("Access-Control-Allow-Headers","Access-Control-Request-Headers")
                                     .addHeader("Access-Control-Allow-Methods","Access-Control-Request-Method")
