@@ -14,6 +14,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildTypes.each {
+        it.buildConfigField 'String', 'LOTR_AUTH_KEY', LotrAuthKey
+    }
+
     buildTypes {
         release {
             minifyEnabled false

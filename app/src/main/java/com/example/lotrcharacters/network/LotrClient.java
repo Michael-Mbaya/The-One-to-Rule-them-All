@@ -23,7 +23,7 @@ public class LotrClient {
                         @Override
                         public Response intercept(Chain chain) throws IOException {
                             Request newRequest  = chain.request().newBuilder()
-                                    .addHeader("Authorization", "Bearer 4ykLdI43GlXwdWty_0Vy") //Bearer 4ykLdI43GlXwdWty_0Vy
+                                    .addHeader("Authorization", LOTR_BASE_URL) //from Constants(which gets from gradle Build Files)
                                     .addHeader("Access-Control-Allow-Origin","*")
                                     .addHeader("Access-Control-Allow-Headers","Access-Control-Request-Headers")
                                     .addHeader("Access-Control-Allow-Methods","Access-Control-Request-Method")
