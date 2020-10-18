@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">LotrCharacters</string>
+    <string name="nextactivitybutton">nextActivityButton</string>
+    <string name="go_to_characters">Go to Characters</string>
+    <string name="my_lotr_catchphrase">My Lotr CatchPhrase</string>
+    <string name="lord_of_the_rings_characters_image">Lord Of The Rings Characters Image</string>
+    <string name="what_should_we_call_you">What Should We Call You?</string>
+    <string name="your_name_please">Your Name Please?</string>
 </resources>
