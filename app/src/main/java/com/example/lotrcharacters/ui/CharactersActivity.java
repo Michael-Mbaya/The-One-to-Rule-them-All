@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,12 +29,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CharactersActivity extends AppCompatActivity {
-
-    String[] names = new String[]{"xy","xy","xy","xy","xy","xy","xy","xy","xy","xy"};
-    String[] races = new String[]{"z","z","z","z","z","z","z","z","z","z"};     // #JoynerLucas - I'm Not Racist
+    public static final String TAG = CharactersActivity.class.getSimpleName();
+//    String[] names = new String[]{"xy","xy","xy","xy","xy","xy","xy","xy","xy","xy"};
+//    String[] races = new String[]{"z","z","z","z","z","z","z","z","z","z"};     // #JoynerLucas - I'm Not Racist
 
     @BindView(R.id.welcomeTextView) TextView mWelcomeName;
     @BindView(R.id.charactersList) ListView mList;
+    @BindView(R.id.errorTextView) TextView mErrorTextView;
+    @BindView(R.id.progressBar) ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class CharactersActivity extends AppCompatActivity {
 
         //call response and/or failure
         call.enqueue(new Callback<MyPreciousResponse>() {
+
             @Override
             public void onResponse(Call<MyPreciousResponse> call, Response<MyPreciousResponse> response) {
                 if (response.isSuccessful()) {
@@ -68,24 +72,42 @@ public class CharactersActivity extends AppCompatActivity {
                         Log.i("Some results","I believe this! Wonders Man!!!");
                     }
 
+                    String[] characterNames = new String[newList.size()];
+                    String[] characterRaces = new String[newList.size()];    //Am not Racist
 
+                    for (int i = 0; i < characterNames.length; i++){
+                        characterNames[i] = newList.get(i).getName();
+                    }
 
+                    for (int i = 0; i < characterRaces.length; i++) {
+                        characterRaces[i] = newList.get(i).getRace();
+                    }
 
+                    //Custom adapter
+                    ArrayAdapter adapter = new CharacterListArrayAdapter(CharactersActivity.this, android.R.layout.simple_list_item_1, characterNames, characterRaces);
+                    mList.setAdapter(adapter);
+
+                    showCharacters();
+                    hideProgressBar();
+                }else {
+                    showUnsuccessfulMessage();
+                    hideProgressBar();
                 }
             }
-
             @Override
             public void onFailure(Call<MyPreciousResponse> call, Throwable t) {
-
+                Log.e(TAG, "onFailure: ",t );
+                showFailureMessage();
+                hideProgressBar();
             }
 
         });
 
 
-        //Custom Array and/or List adapters
-        ArrayAdapter adapter
-                = new CharacterListArrayAdapter(CharactersActivity.this, android.R.layout.simple_list_item_1, names, races);
-        mList.setAdapter(adapter);
+//        //Custom Array and/or List adapters
+//        ArrayAdapter adapter
+//                = new CharacterListArrayAdapter(CharactersActivity.this, android.R.layout.simple_list_item_1, names, races);
+//        mList.setAdapter(adapter);
         //Toast on list items
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -95,6 +117,24 @@ public class CharactersActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void showFailureMessage() {
+        mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showUnsuccessfulMessage() {
+        mErrorTextView.setText("Something went wrong. Please try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showCharacters() {
+        mList.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
     }
 
 }
