@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lotrcharacters.R;
 import com.example.lotrcharacters.models.Doc;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -20,34 +20,13 @@ import butterknife.ButterKnife;
 
 public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdapter.CharacterViewHolder> {
 
+
     private List<Doc> mDocList;
     private Context mContext;
 
     public CharacterListAdapter(Context context, List<Doc> docList) {
         mContext = context;
         mDocList = docList;
-    }
-
-
-    public class CharacterViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.characterImageView) ImageView mCharPic;
-        @BindView(R.id.charNameTextView) TextView mName;
-        @BindView(R.id.raceTextView) TextView mRace;
-        @BindView(R.id.wikiTextView) TextView mWiki;
-
-        private Context mContext;
-
-        public CharacterViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-            mContext = itemView.getContext();
-        }
-
-        public void bindCharacter(Doc bugBunny) {
-            mName.setText(bugBunny.getName());
-            mRace.setText(bugBunny.getRace());
-            mWiki.setText(bugBunny.getWikiUrl());
-        }
     }
 
     @Override
@@ -66,5 +45,28 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
     public int getItemCount() {
         return mDocList.size();
     }
+
+    public class CharacterViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.characterImageView) ImageView mCharPic;
+        @BindView(R.id.charNameTextView) TextView mName;
+        @BindView(R.id.raceTextView) TextView mRace;
+        @BindView(R.id.wikiTextView) TextView mWiki;
+
+        private Context mContext;
+
+        public CharacterViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+            mContext = itemView.getContext();
+        }
+
+        public void bindCharacter(Doc bugBunny) {
+            Picasso.get().load(R.drawable.frodo_ring).into(mCharPic);
+            mName.setText(bugBunny.getName());
+            mRace.setText(bugBunny.getRace());
+            mWiki.setText(bugBunny.getWikiUrl());
+        }
+    }
+
 
 }
