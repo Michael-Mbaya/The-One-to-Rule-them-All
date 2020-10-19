@@ -12,8 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lotrcharacters.R;
+import com.example.lotrcharacters.adapters.CharacterListAdapter;
 import com.example.lotrcharacters.adapters.CharacterListArrayAdapter;
 import com.example.lotrcharacters.models.Doc;
 import com.example.lotrcharacters.models.MyPreciousResponse;
@@ -31,10 +34,14 @@ import retrofit2.Response;
 public class CharactersActivity extends AppCompatActivity {
     public static final String TAG = CharactersActivity.class.getSimpleName();
 
-    @BindView(R.id.welcomeTextView) TextView mWelcomeName;
-    @BindView(R.id.charactersList) ListView mList;
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
+    @BindView(R.id.welcomeTextView) TextView mWelcomeName;
+//    @BindView(R.id.charactersList) ListView mList;
+//    replaced with
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+    private CharacterListAdapter mAdapter;
+//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,33 +67,43 @@ public class CharactersActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     MyPreciousResponse lotrRes = response.body();
-                    Log.i("Response Body",lotrRes.toString());
-
                     List<Doc> newList = lotrRes.getDocs();
-                    Log.i("Characters List",newList.toString());
-                    if(newList==null){
-                        Log.i("Empty results","Can' believe this Empty Things");
-                    }else {
-                        Log.i("Some results","I believe this! Wonders Man!!!");
-                    }
 
-                    String[] characterNames = new String[newList.size()];
-                    String[] characterRaces = new String[newList.size()];    //Am not Racist
+                    mAdapter = new CharacterListAdapter(CharactersActivity.this, newList);
+                    mRecyclerView.setAdapter(mAdapter);
+                    RecyclerView.LayoutManager layoutManager =
+                            new LinearLayoutManager(CharactersActivity.this);
+                    mRecyclerView.setLayoutManager(layoutManager);
+                    mRecyclerView.setHasFixedSize(true);
 
-                    for (int i = 0; i < characterNames.length; i++){
-                        characterNames[i] = newList.get(i).getName();
-                    }
-
-                    for (int i = 0; i < characterRaces.length; i++) {
-                        characterRaces[i] = newList.get(i).getRace();
-                    }
-
-                    //Custom adapter
-                    ArrayAdapter adapter = new CharacterListArrayAdapter(CharactersActivity.this, android.R.layout.simple_list_item_1, characterNames, characterRaces);
-                    mList.setAdapter(adapter);
-
+//                    Log.i("Response Body",lotrRes.toString());
+//
+//                    List<Doc> newList = lotrRes.getDocs();
+//                    Log.i("Characters List",newList.toString());
+//                    if(newList==null){
+//                        Log.i("Empty results","Can' believe this Empty Things");
+//                    }else {
+//                        Log.i("Some results","I believe this! Wonders Man!!!");
+//                    }
+//
+//                    String[] characterNames = new String[newList.size()];
+//                    String[] characterRaces = new String[newList.size()];    //Am not Racist
+//
+//                    for (int i = 0; i < characterNames.length; i++){
+//                        characterNames[i] = newList.get(i).getName();
+//                    }
+//
+//                    for (int i = 0; i < characterRaces.length; i++) {
+//                        characterRaces[i] = newList.get(i).getRace();
+//                    }
+//
+//                    //Custom adapter
+////                    ArrayAdapter adapter = new CharacterListArrayAdapter(CharactersActivity.this, android.R.layout.simple_list_item_1, characterNames, characterRaces);
+////                    mList.setAdapter(adapter);
+//
+//                    showCharacters();
+//                    hideProgressBar();
                     showCharacters();
-                    hideProgressBar();
                 }else {
                     showUnsuccessfulMessage();
                     hideProgressBar();
@@ -101,13 +118,13 @@ public class CharactersActivity extends AppCompatActivity {
 
         });
 
-        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String listItem = ((TextView)view).getText().toString();
-                Toast.makeText(CharactersActivity.this, listItem, Toast.LENGTH_LONG).show();
-            }
-        });
+//        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                String listItem = ((TextView)view).getText().toString();
+//                Toast.makeText(CharactersActivity.this, listItem, Toast.LENGTH_LONG).show();
+//            }
+//        });
 
     }
 
@@ -122,7 +139,9 @@ public class CharactersActivity extends AppCompatActivity {
     }
 
     private void showCharacters() {
-        mList.setVisibility(View.VISIBLE);
+//        mList.setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.VISIBLE);
+        mProgressBar.setVisibility(View.GONE);
     }
 
     private void hideProgressBar() {
