@@ -30,8 +30,6 @@ import retrofit2.Response;
 
 public class CharactersActivity extends AppCompatActivity {
     public static final String TAG = CharactersActivity.class.getSimpleName();
-//    String[] names = new String[]{"xy","xy","xy","xy","xy","xy","xy","xy","xy","xy"};
-//    String[] races = new String[]{"z","z","z","z","z","z","z","z","z","z"};     // #JoynerLucas - I'm Not Racist
 
     @BindView(R.id.welcomeTextView) TextView mWelcomeName;
     @BindView(R.id.charactersList) ListView mList;
@@ -103,12 +101,6 @@ public class CharactersActivity extends AppCompatActivity {
 
         });
 
-
-//        //Custom Array and/or List adapters
-//        ArrayAdapter adapter
-//                = new CharacterListArrayAdapter(CharactersActivity.this, android.R.layout.simple_list_item_1, names, races);
-//        mList.setAdapter(adapter);
-        //Toast on list items
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -138,3 +130,7 @@ public class CharactersActivity extends AppCompatActivity {
     }
 
 }
+
+
+//    String[] names = new String[]{"xy","xy","xy","xy","xy","xy","xy","xy","xy","xy"};
+//    String[] races = new String[]{"z","z","z","z","z","z","z","z","z","z"};     // #JoynerLucas - I'm Not Racist

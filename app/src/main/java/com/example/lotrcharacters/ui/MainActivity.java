@@ -15,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    public static final String TAG = MainActivity.class.getSimpleName();
 
     @BindView(R.id.nameEditText) EditText mNameToCall;
     @BindView(R.id.nextActButton) Button mNextActivity;

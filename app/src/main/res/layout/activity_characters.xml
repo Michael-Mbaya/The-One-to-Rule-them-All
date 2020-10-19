@@ -4,7 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.CharactersActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView" />
 
     <TextView
         android:id="@+id/errorTextView"
@@ -12,7 +23,6 @@
         android:layout_height="210dp"
         android:fontFamily="@font/fallingsky"
         android:gravity="center"
-        android:text="TextView"
         android:textSize="24sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,7 +47,7 @@
         android:fontFamily="@font/roboto_regular"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Characters Activity"
+        android:text="@string/characters_activity"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"
