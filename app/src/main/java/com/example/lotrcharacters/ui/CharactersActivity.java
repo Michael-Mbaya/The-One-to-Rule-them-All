@@ -67,7 +67,17 @@ public class CharactersActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     MyPreciousResponse lotrRes = response.body();
+
+                    Log.i("Response Body",lotrRes.toString());
                     List<Doc> newList = lotrRes.getDocs();
+//                    List<Doc> newList = lotrRes.getDocs();
+                    Log.i("Characters List",newList.toString());
+                    if(newList==null){
+                        Log.i("Empty results","Can' believe this Empty Things");
+                    }else {
+                        Log.i("Some results","I believe this! Wonders Man!!!");
+                    }
+
 
                     mAdapter = new CharacterListAdapter(CharactersActivity.this, newList);
                     mRecyclerView.setAdapter(mAdapter);

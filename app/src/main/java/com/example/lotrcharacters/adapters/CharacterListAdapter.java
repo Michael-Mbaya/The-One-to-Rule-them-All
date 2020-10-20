@@ -61,7 +61,7 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
         }
 
         public void bindCharacter(Doc bugBunny) {
-            Picasso.get().load(R.drawable.frodo_ring).into(mCharPic);
+            Picasso.get().load(R.drawable.lotr_most).into(mCharPic);
             mName.setText(bugBunny.getName());
             mRace.setText(bugBunny.getRace());
             mWiki.setText(bugBunny.getWikiUrl());
