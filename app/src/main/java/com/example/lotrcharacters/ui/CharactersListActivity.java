@@ -4,12 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lotrcharacters.R;
 import com.example.lotrcharacters.adapters.CharacterListAdapter;
-import com.example.lotrcharacters.adapters.CharacterListArrayAdapter;
 import com.example.lotrcharacters.models.Doc;
 import com.example.lotrcharacters.models.MyPreciousResponse;
 import com.example.lotrcharacters.network.LotrAPI;
@@ -31,8 +26,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CharactersActivity extends AppCompatActivity {
-    public static final String TAG = CharactersActivity.class.getSimpleName();
+public class CharactersListActivity extends AppCompatActivity {
+    public static final String TAG = CharactersListActivity.class.getSimpleName();
 
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
@@ -46,7 +41,7 @@ public class CharactersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_characters);
+        setContentView(R.layout.activity_characters_list);
         ButterKnife.bind(this);
 
         //getting/pull data from intent extra
@@ -79,10 +74,10 @@ public class CharactersActivity extends AppCompatActivity {
                     }
 
 
-                    mAdapter = new CharacterListAdapter(CharactersActivity.this, newList);
+                    mAdapter = new CharacterListAdapter(CharactersListActivity.this, newList);
                     mRecyclerView.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager =
-                            new LinearLayoutManager(CharactersActivity.this);
+                            new LinearLayoutManager(CharactersListActivity.this);
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
 
@@ -108,7 +103,7 @@ public class CharactersActivity extends AppCompatActivity {
 //                    }
 //
 //                    //Custom adapter
-////                    ArrayAdapter adapter = new CharacterListArrayAdapter(CharactersActivity.this, android.R.layout.simple_list_item_1, characterNames, characterRaces);
+////                    ArrayAdapter adapter = new CharacterListArrayAdapter(CharactersListActivity.this, android.R.layout.simple_list_item_1, characterNames, characterRaces);
 ////                    mList.setAdapter(adapter);
 //
 //                    showCharacters();
@@ -132,7 +127,7 @@ public class CharactersActivity extends AppCompatActivity {
 //            @Override
 //            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 //                String listItem = ((TextView)view).getText().toString();
-//                Toast.makeText(CharactersActivity.this, listItem, Toast.LENGTH_LONG).show();
+//                Toast.makeText(CharactersListActivity.this, listItem, Toast.LENGTH_LONG).show();
 //            }
 //        });
 

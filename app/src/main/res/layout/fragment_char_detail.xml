@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.CharDetailFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/eyeFragmentImage"
+                android:layout_width="0dp"
+                android:layout_height="230dp"
+                android:src="@drawable/eye_close_up"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/droid_serif"
+                android:gravity="center"
+                android:text="NameText"
+                android:textColor="@color/brownBrewsdog"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/raceTextView"
+                android:layout_width="263dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/smartwatch"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:text="RaceText"
+                android:textColor="@color/brownBrewsdog"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+
+            <TextView
+                android:id="@+id/labelRace"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/fallingsky"
+                android:gravity="center|end"
+                android:paddingEnd="20dp"
+                android:text="Race of:"
+                android:textColor="@color/blackest"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/raceTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+
+            <TextView
+                android:id="@+id/realmTextView"
+                android:layout_width="263dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/smartwatch"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:text="RealmText"
+                android:textColor="@color/brownBrewsdog"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/raceTextView" />
+
+            <TextView
+                android:id="@+id/labelRealm"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/fallingsky"
+                android:gravity="center|end"
+                android:paddingEnd="20dp"
+                android:text="Of Realm:"
+                android:textColor="@color/blackest"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/raceTextView"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelRace" />
+
+            <TextView
+                android:id="@+id/wikiTextView"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="WikiText"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/realmTextView" />
+
+            <TextView
+                android:id="@+id/labelBirth"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/fallingsky"
+                android:gravity="center|end"
+                android:paddingEnd="20dp"
+                android:text="Birth:"
+                android:textColor="@color/blackest"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/raceTextView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/wikiTextView" />
+
+            <TextView
+                android:id="@+id/birthTextView"
+                android:layout_width="263dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/smartwatch"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:text="BirthText"
+                android:textColor="@color/brownBrewsdog"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/wikiTextView" />
+
+            <TextView
+                android:id="@+id/labelDeath"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/fallingsky"
+                android:gravity="center|end"
+                android:paddingEnd="20dp"
+                android:text="Death:"
+                android:textColor="@color/blackest"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/raceTextView"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelBirth" />
+
+            <TextView
+                android:id="@+id/deathTextView"
+                android:layout_width="263dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/smartwatch"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:text="DeathText"
+                android:textColor="@color/brownBrewsdog"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/birthTextView" />
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="202dp"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_corner"
+                android:text="Save Character"
+                android:textColor="@color/Whitest"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelDeath" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

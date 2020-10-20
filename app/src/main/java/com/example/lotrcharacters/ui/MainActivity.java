@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(MainActivity.this, "Text is Required", Toast.LENGTH_LONG).show();
             } else {
                 String myNameIs = mNameToCall.getText().toString();
-                Intent intent = new Intent(MainActivity.this, CharactersActivity.class);
+                Intent intent = new Intent(MainActivity.this, CharactersListActivity.class);
                 //pass data with intent extras
                 intent.putExtra("myName", myNameIs);
                 //go to search activity
