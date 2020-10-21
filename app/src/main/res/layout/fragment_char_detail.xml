@@ -16,7 +16,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/eyeFragmentImage"
+                android:id="@+id/eyeSauronImage"
                 android:layout_width="0dp"
                 android:layout_height="230dp"
                 android:src="@drawable/eye_close_up"
