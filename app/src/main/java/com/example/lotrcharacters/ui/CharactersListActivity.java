@@ -1,7 +1,9 @@
 package com.example.lotrcharacters.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -11,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.lotrcharacters.Constants;
 import com.example.lotrcharacters.R;
 import com.example.lotrcharacters.adapters.CharacterListAdapter;
 import com.example.lotrcharacters.models.Doc;
@@ -26,14 +29,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class CharactersListActivity extends AppCompatActivity {
     public static final String TAG = CharactersListActivity.class.getSimpleName();
+    private SharedPreferences mSharedPreferences;
+    private String mRecentName;
 
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
     @BindView(R.id.welcomeTextView) TextView mWelcomeName;
-//    @BindView(R.id.charactersList) ListView mList;
-//    replaced with
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private CharacterListAdapter mAdapter;
 //
@@ -49,11 +53,15 @@ public class CharactersListActivity extends AppCompatActivity {
         String input = intent.getStringExtra("myName");
         mWelcomeName.setText("Welcome "+input+"!");
 
+        //shred pref
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentName = mSharedPreferences.getString(Constants.PREFERENCES_NAME_KEY, null);
+        Log.d("Shared Pref Name", mRecentName);
+        //
 
         //apicall
         LotrAPI client = LotrClient.getClient();
         Call<MyPreciousResponse> call = client.getCharacters(); //query limit and sort
-
         //call response and/or failure
         call.enqueue(new Callback<MyPreciousResponse>() {
 
@@ -81,33 +89,6 @@ public class CharactersListActivity extends AppCompatActivity {
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
 
-//                    Log.i("Response Body",lotrRes.toString());
-//
-//                    List<Doc> newList = lotrRes.getDocs();
-//                    Log.i("Characters List",newList.toString());
-//                    if(newList==null){
-//                        Log.i("Empty results","Can' believe this Empty Things");
-//                    }else {
-//                        Log.i("Some results","I believe this! Wonders Man!!!");
-//                    }
-//
-//                    String[] characterNames = new String[newList.size()];
-//                    String[] characterRaces = new String[newList.size()];    //Am not Racist
-//
-//                    for (int i = 0; i < characterNames.length; i++){
-//                        characterNames[i] = newList.get(i).getName();
-//                    }
-//
-//                    for (int i = 0; i < characterRaces.length; i++) {
-//                        characterRaces[i] = newList.get(i).getRace();
-//                    }
-//
-//                    //Custom adapter
-////                    ArrayAdapter adapter = new CharacterListArrayAdapter(CharactersListActivity.this, android.R.layout.simple_list_item_1, characterNames, characterRaces);
-////                    mList.setAdapter(adapter);
-//
-//                    showCharacters();
-//                    hideProgressBar();
                     showCharacters();
                 }else {
                     showUnsuccessfulMessage();
@@ -122,14 +103,6 @@ public class CharactersListActivity extends AppCompatActivity {
             }
 
         });
-
-//        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                String listItem = ((TextView)view).getText().toString();
-//                Toast.makeText(CharactersListActivity.this, listItem, Toast.LENGTH_LONG).show();
-//            }
-//        });
 
     }
 
