@@ -11,7 +11,7 @@ public interface LotrAPI {
 
     @GET("character")
     Call<MyPreciousResponse> getCharacters(
-//            @Query("limit") String limit,
+            @Query("limit") String limit
 //            @Query("sort") String sorting
 //            sort=name:asc
 //            limit

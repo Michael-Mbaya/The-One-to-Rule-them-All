@@ -58,11 +58,6 @@ public class CharDetailFragment extends Fragment implements View.OnClickListener
         ButterKnife.bind(this, view);
 
         Picasso.get().load(R.drawable.eye_close_up).into(mImge);
-//        List<String> categories = new ArrayList<>();
-//
-//        for (Category category: mCharacter.getCategories()) {
-//            categories.add(category.getTitle());
-//        }
         mName.setText(mCharacter.getName());
         mBirth.setText(mCharacter.getBirth());
         mDeath.setText(mCharacter.getDeath());
