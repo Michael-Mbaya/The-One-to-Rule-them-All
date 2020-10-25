@@ -1,6 +1,7 @@
 package com.example.lotrcharacters.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lotrcharacters.R;
 import com.example.lotrcharacters.models.Doc;
+import com.example.lotrcharacters.ui.CharacterDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -46,7 +50,7 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
         return mDocList.size();
     }
 
-    public class CharacterViewHolder extends RecyclerView.ViewHolder {
+    public class CharacterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.characterImageView) ImageView mCharPic;
         @BindView(R.id.charNameTextView) TextView mName;
         @BindView(R.id.raceTextView) TextView mRace;
@@ -58,6 +62,7 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
         }
 
         public void bindCharacter(Doc bugBunny) {
@@ -65,6 +70,16 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
             mName.setText(bugBunny.getName());
             mRace.setText(bugBunny.getRace());
             mWiki.setText(bugBunny.getWikiUrl());
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, CharacterDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("character", Parcels.wrap(mDocList));
+            mContext.startActivity(intent);
         }
     }
 
