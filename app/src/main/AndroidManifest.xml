@@ -28,7 +28,5 @@
                 android:value="com.example.lotrcharacters.ui.MainActivity" />
         </activity>
         <activity android:name=".ui.CharacterDetailActivity" />
-
     </application>
-
 </manifest>

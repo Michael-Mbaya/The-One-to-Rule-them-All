@@ -1,5 +1,6 @@
 package com.example.lotrcharacters.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.example.lotrcharacters.Constants;
 import com.example.lotrcharacters.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //    private SharedPreferences.Editor mEditor;
     private DatabaseReference mNamesCalledReference;
     private ValueEventListener mNamesCalledReferenceListener;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @BindView(R.id.nameEditText) EditText mNameToCall;
     @BindView(R.id.nextActButton) Button mNextActivity;
@@ -64,6 +68,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener(){
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user != null){
+                    getSupportActionBar().setTitle("Welcome, " + user.getDisplayName() + "!");
+                }else {
+
+                }
+            }
+        };
 
         //scklistener onclicklistener on a view
         mNextActivity.setOnClickListener(this);
@@ -138,10 +155,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
         finish();
     }
-
 //    private void addToSharedPreferences(String name) {
 //            mEditor.putString(Constants.PREFERENCES_NAME_KEY, name).apply();
 //    }
-
+    @Override
+    public void onStart(){
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
     }
 
+    @Override
+    public void onStop(){
+        super.onStop();
+        mAuth.removeAuthStateListener(mAuthListener);
+    }
+    }
