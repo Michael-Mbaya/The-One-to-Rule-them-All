@@ -64,7 +64,7 @@ public class CharactersListActivity extends AppCompatActivity {
 
         //apicall
         LotrAPI client = LotrClient.getClient();
-        Call<MyPreciousResponse> call = client.getCharacters(input); //query limit and sort
+        Call<MyPreciousResponse> call = client.getCharacters(); //query limit and sort
         //call response and/or failure
         call.enqueue(new Callback<MyPreciousResponse>() {
 
