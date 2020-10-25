@@ -6,10 +6,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.lotrcharacters.Constants;
 import com.example.lotrcharacters.models.Doc;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -17,7 +22,7 @@ import com.example.lotrcharacters.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CharDetailFragment extends Fragment {
+public class CharDetailFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.eyeSauronImage) ImageView mImge;
     @BindView(R.id.nameTextView) TextView mName;
     @BindView(R.id.raceTextView) TextView mRace;
@@ -25,6 +30,7 @@ public class CharDetailFragment extends Fragment {
     @BindView(R.id.wikiTextView) TextView mWiki;
     @BindView(R.id.birthTextView) TextView mBirth;
     @BindView(R.id.deathTextView) TextView mDeath;
+    @BindView(R.id.saveButton) Button mSaveCharacter;
 
     private Doc mCharacter;
 
@@ -64,9 +70,24 @@ public class CharDetailFragment extends Fragment {
         mWiki.setText(mCharacter.getWikiUrl());
         mRealm.setText(mCharacter.getRealm());
 
+        mSaveCharacter.setOnClickListener(this);
+
         return view;
     }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mSaveCharacter) {
+            DatabaseReference restaurantRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_CHARACTERS);
+            restaurantRef.push().setValue(mCharacter);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
+
+
 
 
 
