@@ -6,6 +6,7 @@ public class Constants {
     public static final String KEY = BuildConfig.LOTR_AUTH_KEY;
 
     //(Data persistence)- shared-pref and firebase nodes
-    public static final String PREFERENCES_NAME_KEY = "name";
+    public static final String PREFERENCES_NAME_KEY = "nameS";
+    public static final String FIREBASE_CHILD_NAMES = "calledNames";
 
 }

@@ -32,8 +32,8 @@ import retrofit2.Response;
 
 public class CharactersListActivity extends AppCompatActivity {
     public static final String TAG = CharactersListActivity.class.getSimpleName();
-    private SharedPreferences mSharedPreferences;
-    private String mRecentName;
+//    private SharedPreferences mSharedPreferences;
+//    private String mRecentName;
 
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
@@ -49,18 +49,18 @@ public class CharactersListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         //shred pref
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentName = mSharedPreferences.getString(Constants.PREFERENCES_NAME_KEY, null);
-        Log.d("Shared Pref Name", mRecentName);
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentName = mSharedPreferences.getString(Constants.PREFERENCES_NAME_KEY, null);
+//        Log.d("Shared Pref Name", mRecentName);
         //
         //getting/pull data from intent extra
         Intent intent = getIntent();
         String input = intent.getStringExtra("myName");
-        if (mRecentName != null) {
-            mWelcomeName.setText("Welcome " + mRecentName + "!");
-        }else {
+//        if (mRecentName != null) {
+//            mWelcomeName.setText("Welcome " + mRecentName + "!");
+//        }else {
             mWelcomeName.setText("Welcome " + input + "!");
-        }
+//        }
 
         //apicall
         LotrAPI client = LotrClient.getClient();
