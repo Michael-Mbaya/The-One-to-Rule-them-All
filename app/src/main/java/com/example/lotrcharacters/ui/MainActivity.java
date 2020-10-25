@@ -51,8 +51,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            } else {
                 String myNameIs = mNameToCall.getText().toString();
                 //shared pref
+                if(!(myNameIs).equals("")) {
                 addToSharedPreferences(myNameIs);
-                //
+            }
+
+            //
                 Intent intent = new Intent(MainActivity.this, CharactersListActivity.class);
                 intent.putExtra("myName", myNameIs);
                 startActivity(intent);

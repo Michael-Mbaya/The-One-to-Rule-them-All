@@ -48,16 +48,19 @@ public class CharactersListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_characters_list);
         ButterKnife.bind(this);
 
-        //getting/pull data from intent extra
-        Intent intent = getIntent();
-        String input = intent.getStringExtra("myName");
-        mWelcomeName.setText("Welcome "+input+"!");
-
         //shred pref
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentName = mSharedPreferences.getString(Constants.PREFERENCES_NAME_KEY, null);
         Log.d("Shared Pref Name", mRecentName);
         //
+        //getting/pull data from intent extra
+        Intent intent = getIntent();
+        String input = intent.getStringExtra("myName");
+        if (mRecentName != null) {
+            mWelcomeName.setText("Welcome " + mRecentName + "!");
+        }else {
+            mWelcomeName.setText("Welcome " + input + "!");
+        }
 
         //apicall
         LotrAPI client = LotrClient.getClient();
