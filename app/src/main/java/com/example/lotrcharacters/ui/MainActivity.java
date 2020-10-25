@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //scklistener onclicklistener on a view
         mNextActivity.setOnClickListener(this);
 
-
+//data persistence next up
     }
 
     @Override
