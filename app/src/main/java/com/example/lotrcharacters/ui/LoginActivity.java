@@ -62,19 +62,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void createAuthProgressDialog(){
         mAuthProgressDialog = new ProgressDialog(this);
-        mAuthProgressDialog.setTitle("Loading...");
-        mAuthProgressDialog.setMessage("Authenticating with Firebase...");
+        mAuthProgressDialog.setTitle("Checking");
+        mAuthProgressDialog.setMessage("Checking Info...Just a Sec");
         mAuthProgressDialog.setCancelable(false);
     }
 
     @Override
-    public void onClick(View view){
-        if(view == mRegisterTextView){
+    public void onClick(View v){
+        if(v == mRegisterTextView){
             Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
             startActivity(intent);
             finish();
         }
-        if (view == mPasswordLoginButton){
+        if (v == mPasswordLoginButton){
             loginWithPassword();
         }
     }
@@ -95,10 +95,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 mAuthProgressDialog.dismiss();
-                Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+                Log.d(TAG+" Success Login", "signInWithEmail:onComplete:" + task.isSuccessful());
                 if(!task.isSuccessful()){
                     Log.w(TAG, "signInWithEmail", task.getException());
-                    Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Login Faiure, Check your email and/or password and try again or create an account. ", Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -57,19 +57,19 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
     public void createAuthProgressDialog(){
         mAuthProgressDialog = new ProgressDialog(this);
-        mAuthProgressDialog.setTitle("Loading...");
-        mAuthProgressDialog.setMessage("Authenticating with Firebase...");
+        mAuthProgressDialog.setTitle("Checking");
+        mAuthProgressDialog.setMessage("Checking Info...Just a Sec");
         mAuthProgressDialog.setCancelable(false);
     }
 
     @Override
-    public void onClick(View view){
-        if(view == mLoginTextView){
+    public void onClick(View v){
+        if(v == mLoginTextView){
             Intent intent = new Intent(CreateAccountActivity.this, LoginActivity.class);
             intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
-        } if (view == mCreateUserButton){
+        } if (v == mCreateUserButton){
             createNewUser();
         }
     }
@@ -94,9 +94,10 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
                 if (task.isSuccessful()){
                     Log.d(TAG, "Authentication successful");
+                    Toast.makeText(CreateAccountActivity.this,"Account Success", Toast.LENGTH_SHORT).show();
                     createFirebaseUserProfile(task.getResult().getUser());
                 }else {
-                    Toast.makeText(CreateAccountActivity.this,"Authentication failed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateAccountActivity.this,"Failed.A Similar Account Exists", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -169,8 +170,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Log.d(TAG, user.getDisplayName());
-                            Toast.makeText(CreateAccountActivity.this, "The display name has ben set", Toast.LENGTH_LONG).show();
+                            Log.d(TAG+" Display Name", user.getDisplayName());
                         }
                     }
                 });
