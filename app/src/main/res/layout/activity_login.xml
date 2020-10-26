@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@color/logins"
     tools:context="com.example.lotrcharacters.ui.LoginActivity">
 
     <LinearLayout
@@ -60,9 +60,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/fallingsky"
             android:text="Don't have an account? Sign up here!"
             android:textColor="@color/brownBrewsdog"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
     </LinearLayout>

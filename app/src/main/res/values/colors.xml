@@ -9,4 +9,5 @@
     <color name="blackest">#000000</color>
     <color name="Whitest">#FFFFFFFF</color>
     <color name="hints">#8E8B8B</color>
+    <color name="logins">#FF9800</color>
 </resources>
