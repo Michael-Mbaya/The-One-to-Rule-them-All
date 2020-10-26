@@ -21,6 +21,10 @@ Browse Through Lord of the Rings Characters
 * https://github.com/Michael-Mbaya/The-One-to-Rule-them-All.git
 * Emulate on a virtual Machine or on your Phone Device
 
+## Quick Demo of the App
+* What you get after starting the app <br> <br><br>
+* ![demo_lotr.jpg](app/src/main/res/drawable/demo_lotr.jpg)
+<!--* <img src="app/src/main/res/drawable/demo_lotr.jpg" height="" width="" alt="Demo Pic" >-->
 
 ## TECHNNOLOGIES USED
 
