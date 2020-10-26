@@ -22,9 +22,8 @@ Browse Through Lord of the Rings Characters
 * Emulate on a virtual Machine or on your Phone Device
 
 ## Quick Demo of the App
-* What you get after starting the app <br> <br><br>
+* What you get after starting the app <br>
 * ![demo_lotr.jpg](app/src/main/res/drawable/demo_lotr.jpg)
-<!--* <img src="app/src/main/res/drawable/demo_lotr.jpg" height="" width="" alt="Demo Pic" >-->
 
 ## TECHNNOLOGIES USED
 
