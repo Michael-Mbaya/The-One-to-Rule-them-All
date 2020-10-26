@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @BindView(R.id.nameEditText) EditText mNameToCall;
     @BindView(R.id.nextActButton) Button mNextActivity;
+    @BindView(R.id.savedButton) Button msaved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //scklistener onclicklistener on a view
         mNextActivity.setOnClickListener(this);
+        msaved.setOnClickListener(this);
 
         //data persistence next up
 //        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -112,6 +114,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("myName", myNameIs);
                 startActivity(intent);
                 Toast.makeText(MainActivity.this, "Welcome " + myNameIs + "!", Toast.LENGTH_LONG).show();
+            }
+            //
+            if(v==msaved){
+                Intent savedIntent = new Intent(MainActivity.this,SavedCharListActivity.class);
+                startActivity(savedIntent);
             }
 
         }
