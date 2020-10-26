@@ -37,7 +37,7 @@ public class CharactersListActivity extends AppCompatActivity {
 
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
-    @BindView(R.id.welcomeTextView) TextView mWelcomeName;
+//    @BindView(R.id.welcomeTextView) TextView mWelcomeName;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private CharacterListAdapter mAdapter;
 //
@@ -54,12 +54,12 @@ public class CharactersListActivity extends AppCompatActivity {
 //        Log.d("Shared Pref Name", mRecentName);
         //
         //getting/pull data from intent extra
-        Intent intent = getIntent();
-        String input = intent.getStringExtra("myName");
+//        Intent intent = getIntent();
+//        String input = intent.getStringExtra("myName");
 //        if (mRecentName != null) {
 //            mWelcomeName.setText("Welcome " + mRecentName + "!");
 //        }else {
-            mWelcomeName.setText("Welcome " + input + "!");
+//            mWelcomeName.setText("Welcome " + input + "!");
 //        }
 
         //apicall

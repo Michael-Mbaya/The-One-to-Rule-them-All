@@ -32,39 +32,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final String TAG = MainActivity.class.getSimpleName();
     //    private SharedPreferences mSharedPreferences;
 //    private SharedPreferences.Editor mEditor;
-    private DatabaseReference mNamesCalledReference;
-    private ValueEventListener mNamesCalledReferenceListener;
+//    private DatabaseReference mNamesCalledReference;
+//    private ValueEventListener mNamesCalledReferenceListener;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    @BindView(R.id.nameEditText) EditText mNameToCall;
+//    @BindView(R.id.nameEditText) EditText mNameToCall;
     @BindView(R.id.nextActButton) Button mNextActivity;
     @BindView(R.id.savedButton) Button msaved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        mNamesCalledReference = FirebaseDatabase
-                .getInstance()
-                .getReference()
-                .child(Constants.FIREBASE_CHILD_NAMES); //pinpoint names node
-
-        mNamesCalledReferenceListener = mNamesCalledReference.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot namesSnapshot : dataSnapshot.getChildren()) {
-                    String location = namesSnapshot.getValue().toString();
-                    Log.d("Names updated", "New Name: " + location);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-
-        });
+//        mNamesCalledReference = FirebaseDatabase
+//                .getInstance()
+//                .getReference()
+//                .child(Constants.FIREBASE_CHILD_NAMES); //pinpoint names node
+//
+//        mNamesCalledReferenceListener = mNamesCalledReference.addValueEventListener(new ValueEventListener() {
+//
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot namesSnapshot : dataSnapshot.getChildren()) {
+//                    String location = namesSnapshot.getValue().toString();
+//                    Log.d("Names updated", "New Name: " + location);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//
+//        });
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -102,8 +102,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                mNameToCall.setError("Text is Required");
 //                Toast.makeText(MainActivity.this, "Text is Required", Toast.LENGTH_LONG).show();
 //            } else {
-                String myNameIs = mNameToCall.getText().toString();
-                saveLocationToFirebase(myNameIs);
+//                String myNameIs = mNameToCall.getText().toString();
+//                saveLocationToFirebase(myNameIs);
                 //shared pref
 //                if(!(myNameIs).equals("")) {
 //                addToSharedPreferences(myNameIs);
@@ -111,9 +111,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 //
                 Intent intent = new Intent(MainActivity.this, CharactersListActivity.class);
-                intent.putExtra("myName", myNameIs);
+//                intent.putExtra("myName", myNameIs);
                 startActivity(intent);
-                Toast.makeText(MainActivity.this, "Welcome " + myNameIs + "!", Toast.LENGTH_LONG).show();
+//                Toast.makeText(MainActivity.this, "Welcome " + myNameIs + "!", Toast.LENGTH_LONG).show();
             }
             //
             if(v==msaved){
@@ -123,18 +123,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
-        public void saveLocationToFirebase (String names){
-            mNamesCalledReference.push().setValue(names);
-        }
+//        public void saveLocationToFirebase (String names){
+//            mNamesCalledReference.push().setValue(names);
+//        }
 
-    @Override
-    protected void onDestroy() {
-        //    defined in 'top level' of activity, not nested within another block.
-        //    code here is executed when the user quits the activity.
-        super.onDestroy();
-        mNamesCalledReference.removeEventListener(mNamesCalledReferenceListener);
-//        Log.d("On Destroy","Data change Listener Destroyed");
-    }
+//    @Override
+//    protected void onDestroy() {
+//        //    defined in 'top level' of activity, not nested within another block.
+//        //    code here is executed when the user quits the activity.
+//        super.onDestroy();
+//        mNamesCalledReference.removeEventListener(mNamesCalledReferenceListener);
+////        Log.d("On Destroy","Data change Listener Destroyed");
+//    }
 
     //inflate menu
     @Override

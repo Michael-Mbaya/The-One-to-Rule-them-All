@@ -35,43 +35,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/lotr_popular" />
 
-    <EditText
-        android:id="@+id/nameEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginTop="120dp"
-        android:drawableLeft="?android:attr/actionModeWebSearchDrawable"
-        android:drawablePadding="5dp"
-        android:fontFamily="@font/droid_sans"
-        android:gravity="center"
-        android:hint="@string/what_should_we_call_you"
-        android:maxLines="1"
-        android:minLines="1"
-        android:textCursorDrawable="@android:color/background_dark"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoImage">
+<!--    <EditText-->
+<!--        android:id="@+id/nameEditText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:layout_marginTop="120dp"-->
+<!--        android:drawableLeft="?android:attr/actionModeWebSearchDrawable"-->
+<!--        android:drawablePadding="5dp"-->
+<!--        android:fontFamily="@font/droid_sans"-->
+<!--        android:gravity="center"-->
+<!--        android:hint="@string/what_should_we_call_you"-->
+<!--        android:maxLines="1"-->
+<!--        android:minLines="1"-->
+<!--        android:textCursorDrawable="@android:color/background_dark"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.496"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/logoImage">-->
 
-    </EditText>
+<!--    </EditText>-->
 
     <Button
         android:id="@+id/nextActButton"
         android:layout_width="210dp"
         android:layout_height="42dp"
+        android:layout_marginTop="124dp"
         android:background="@drawable/rounded_corner"
         android:contentDescription="@string/nextactivitybutton"
         android:fontFamily="@font/droid_sans"
         android:text="@string/go_to_characters"
         android:textColor="@color/Whitest"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameEditText"
-        app:layout_constraintVertical_bias="0.162" />
+        app:layout_constraintTop_toBottomOf="@+id/logoImage" />
 
     <Button
         android:id="@+id/savedButton"
@@ -87,6 +86,6 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nextActButton"
-        app:layout_constraintVertical_bias="0.502" />
+        app:layout_constraintVertical_bias="0.261" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
