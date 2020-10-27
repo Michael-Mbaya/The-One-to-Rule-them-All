@@ -1,6 +1,8 @@
 package com.example.lotrcharacters.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -66,6 +68,7 @@ public class CharDetailFragment extends Fragment implements View.OnClickListener
         mRealm.setText(mCharacter.getRealm());
 
         mSaveCharacter.setOnClickListener(this);
+        mWiki.setOnClickListener(this);
 
         return view;
     }
@@ -78,6 +81,11 @@ public class CharDetailFragment extends Fragment implements View.OnClickListener
                     .getReference(Constants.FIREBASE_CHILD_CHARACTERS);
             restaurantRef.push().setValue(mCharacter);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }
+        if(v==mWiki){
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mCharacter.getWikiUrl()));
+            startActivity(webIntent);
         }
     }
 }
