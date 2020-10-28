@@ -10,4 +10,6 @@
     <color name="Whitest">#FFFFFFFF</color>
     <color name="hints">#8E8B8B</color>
     <color name="logins">#FF9800</color>
+    <color name="reddest">#FF0000</color>
+    <color name="neutral">#FFD6C7C7</color>
 </resources>
