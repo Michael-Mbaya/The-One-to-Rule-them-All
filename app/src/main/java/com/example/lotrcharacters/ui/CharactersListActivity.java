@@ -1,9 +1,6 @@
 package com.example.lotrcharacters.ui;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -13,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.lotrcharacters.Constants;
 import com.example.lotrcharacters.R;
 import com.example.lotrcharacters.adapters.CharacterListAdapter;
 import com.example.lotrcharacters.models.Doc;
@@ -45,22 +41,8 @@ public class CharactersListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_characters_list);
+        setContentView(R.layout.activity_characters);
         ButterKnife.bind(this);
-
-        //shred pref
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mRecentName = mSharedPreferences.getString(Constants.PREFERENCES_NAME_KEY, null);
-//        Log.d("Shared Pref Name", mRecentName);
-        //
-        //getting/pull data from intent extra
-//        Intent intent = getIntent();
-//        String input = intent.getStringExtra("myName");
-//        if (mRecentName != null) {
-//            mWelcomeName.setText("Welcome " + mRecentName + "!");
-//        }else {
-//            mWelcomeName.setText("Welcome " + input + "!");
-//        }
 
         //apicall
         LotrAPI client = LotrClient.getClient();

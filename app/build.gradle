@@ -70,11 +70,15 @@ dependencies {
     implementation 'org.parceler:parceler-api:1.1.13'
     annotationProcessor 'org.parceler:parceler:1.1.13'
     //Add firebase SDK
-    implementation 'com.google.firebase:firebase-core:16.0.7'
-    implementation 'com.google.firebase:firebase-auth:16.1.0'
-    // The latest version of firebase-ui currently at
-    //  implementation 'com.firebaseui:firebase-ui-database:4.3.1' causes compile errors so use the one below instead.
+    implementation 'com.google.firebase:firebase-core:17.5.1'
+    //Realtime Database for firebase data saving
+    implementation 'com.google.firebase:firebase-database:19.5.0'
+    // FirebaseUI for Firebase Realtime Database
+    //  implementation 'com.firebaseui:firebase-ui-database:4.3.1'
+    // The latest version of firebase-ui causes compile errors
     implementation 'com.firebaseui:firebase-ui-database:3.3.1'
+    //Firebase User Authentication
+    implementation 'com.google.firebase:firebase-auth:19.4.0'
 }
 //Add this line also with the Firebase dependencies
 apply plugin: 'com.google.gms.google-services'

@@ -42,6 +42,8 @@ public class Doc {
     @SerializedName("wikiUrl")
     @Expose
     public String wikiUrl;
+    //pushId
+    private String pushId;
 
     /**
      * No args constructor for use in serialization
@@ -77,6 +79,14 @@ public class Doc {
         this.hair = hair;
         this.name = name;
         this.wikiUrl = wikiUrl;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
     public String getId() {

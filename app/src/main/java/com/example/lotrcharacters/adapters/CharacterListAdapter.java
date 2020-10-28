@@ -51,7 +51,7 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
     }
 
     public class CharacterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @BindView(R.id.characterImageView) ImageView mCharPic;
+        @BindView(R.id.charImageView) ImageView mCharPic;
         @BindView(R.id.charNameTextView) TextView mName;
         @BindView(R.id.raceTextView) TextView mRace;
         @BindView(R.id.wikiTextView) TextView mWiki;
@@ -78,7 +78,7 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, CharacterDetailActivity.class);
             intent.putExtra("position", itemPosition);
-            intent.putExtra("character", Parcels.wrap(mDocList));
+            intent.putExtra("characters", Parcels.wrap(mDocList));
             mContext.startActivity(intent);
         }
     }

@@ -12,6 +12,8 @@ import com.example.lotrcharacters.Constants;
 import com.example.lotrcharacters.R;
 import com.example.lotrcharacters.models.Doc;
 import com.example.lotrcharacters.ui.CharacterDetailActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,12 +25,12 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-public class FirebaseCharacterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class FirebaseCharViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     View v;
     Context mContext;
 
-    public FirebaseCharacterViewHolder(View itemView) {
+    public FirebaseCharViewHolder(View itemView) {
         super(itemView);
         v = itemView;
         mContext = itemView.getContext();
@@ -37,27 +39,29 @@ public class FirebaseCharacterViewHolder extends RecyclerView.ViewHolder impleme
 
     public void bindCharacter(Doc character) {
 
-        ImageView charImageView = (ImageView) v.findViewById(R.id.eyeSauronImage);
-        TextView nameTextView = (TextView) v.findViewById(R.id.nameTextView);
+        ImageView charImageView = (ImageView) v.findViewById(R.id.charImageView);
+        TextView nameTextView = (TextView) v.findViewById(R.id.charNameTextView);
         TextView raceTextView = (TextView) v.findViewById(R.id.raceTextView);
-        TextView realmTextView = (TextView) v.findViewById(R.id.realmTextView);
-        TextView birthTextView = (TextView) v.findViewById(R.id.birthTextView);
-        TextView deathTextView = (TextView) v.findViewById(R.id.deathTextView);
+//        TextView realmTextView = (TextView) v.findViewById(R.id.realmTextView);
+//        TextView birthTextView = (TextView) v.findViewById(R.id.birthTextView);
+//        TextView deathTextView = (TextView) v.findViewById(R.id.deathTextView);
         TextView wikiTextView = (TextView) v.findViewById(R.id.wikiTextView);
 
         Picasso.get().load(R.drawable.frodo_ring).into(charImageView);
         nameTextView.setText(character.getName());
         raceTextView.setText(character.getRace());
-        realmTextView.setText(character.getRealm());
-        birthTextView.setText(character.getBirth());
-        deathTextView.setText(character.getDeath());
+//        realmTextView.setText(character.getRealm());
+//        birthTextView.setText(character.getBirth());
+//        deathTextView.setText(character.getDeath());
         wikiTextView.setText(character.getWikiUrl());
     }
 
     @Override
     public void onClick(View view) {
         final ArrayList<Doc> docs = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CHARACTERS);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CHARACTERS).child(uid);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
@@ -70,7 +74,7 @@ public class FirebaseCharacterViewHolder extends RecyclerView.ViewHolder impleme
 
                 Intent intent = new Intent(mContext, CharacterDetailActivity.class);
                 intent.putExtra("position", itemPosition + "");
-                intent.putExtra("restaurants", Parcels.wrap(docs));
+                intent.putExtra("characters", Parcels.wrap(docs));
 
                 mContext.startActivity(intent);
             }

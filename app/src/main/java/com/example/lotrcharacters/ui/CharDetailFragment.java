@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.example.lotrcharacters.Constants;
 import com.example.lotrcharacters.models.Doc;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -76,10 +78,17 @@ public class CharDetailFragment extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View v) {
         if (v == mSaveCharacter) {
-            DatabaseReference restaurantRef = FirebaseDatabase
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
+            DatabaseReference databaseReference = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_CHARACTERS);
-            restaurantRef.push().setValue(mCharacter);
+                    .getReference(Constants.FIREBASE_CHILD_CHARACTERS)
+                    .child(uid);
+            DatabaseReference pushRef = databaseReference.push();
+            String pushId = pushRef.getKey();
+            mCharacter.setPushId(pushId);
+            pushRef.setValue(mCharacter);
+//            databaseReference.push().setValue(mCharacter);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
         if(v==mWiki){
