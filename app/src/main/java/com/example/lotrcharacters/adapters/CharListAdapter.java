@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,20 +19,23 @@ import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CharListAdapter extends RecyclerView.Adapter<CharListAdapter.CharacterViewHolder> {
+public class CharListAdapter extends RecyclerView.Adapter<CharListAdapter.CharacterViewHolder> implements Filterable {
 
 
     private List<Doc> mDocList;
+    private List<Doc> mDocListCopy;
     private Context mContext;
 
     public CharListAdapter(Context context, List<Doc> docList) {
         mContext = context;
         mDocList = docList;
+        mDocListCopy = new ArrayList<>(mDocList);
     }
 
     @Override
@@ -49,6 +54,43 @@ public class CharListAdapter extends RecyclerView.Adapter<CharListAdapter.Charac
     public int getItemCount() {
         return mDocList.size();
     }
+
+    //Filterable method implementation
+    @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+    private Filter exampleFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Doc> filteredList = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0){
+                filteredList.addAll(mDocListCopy);
+            }else{
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for(Doc item:mDocListCopy){
+                    if(item.getName().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+//            return null;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            mDocList.clear();
+            mDocList.addAll((List)results.values);
+            notifyDataSetChanged();
+
+        }
+    };
+    //
 
     public class CharacterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.charImageView) ImageView mCharPic;
