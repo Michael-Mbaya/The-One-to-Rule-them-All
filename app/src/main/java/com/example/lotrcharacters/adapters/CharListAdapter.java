@@ -22,26 +22,26 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdapter.CharacterViewHolder> {
+public class CharListAdapter extends RecyclerView.Adapter<CharListAdapter.CharacterViewHolder> {
 
 
     private List<Doc> mDocList;
     private Context mContext;
 
-    public CharacterListAdapter(Context context, List<Doc> docList) {
+    public CharListAdapter(Context context, List<Doc> docList) {
         mContext = context;
         mDocList = docList;
     }
 
     @Override
-    public CharacterListAdapter.CharacterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CharListAdapter.CharacterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.character_list_item, parent, false);
         CharacterViewHolder viewHolder = new CharacterViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(CharacterListAdapter.CharacterViewHolder holder, int position) {
+    public void onBindViewHolder(CharListAdapter.CharacterViewHolder holder, int position) {
         holder.bindCharacter(mDocList.get(position));
     }
 

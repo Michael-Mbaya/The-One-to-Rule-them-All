@@ -2,7 +2,7 @@ package com.example.lotrcharacters.ui;
 
 import android.os.Bundle;
 import com.example.lotrcharacters.R;
-import com.example.lotrcharacters.adapters.CharacterPagerAdapter;
+import com.example.lotrcharacters.adapters.CharPagerAdapter;
 import com.example.lotrcharacters.models.Doc;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 public class CharacterDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.viewPager) ViewPager mViewPager;
-    private CharacterPagerAdapter adapterViewPager;
+    private CharPagerAdapter adapterViewPager;
     List<Doc> mDocList;
 
     @Override
@@ -31,7 +31,7 @@ public class CharacterDetailActivity extends AppCompatActivity {
         mDocList = Parcels.unwrap(getIntent().getParcelableExtra("characters"));
         int startingPosition = getIntent().getIntExtra("positions", 0);
 
-        adapterViewPager = new CharacterPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, mDocList);
+        adapterViewPager = new CharPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, mDocList);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
 

@@ -61,7 +61,10 @@ public class FirebaseCharViewHolder extends RecyclerView.ViewHolder implements V
         final ArrayList<Doc> docs = new ArrayList<>();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CHARACTERS).child(uid);
+        DatabaseReference ref = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_CHARACTERS)
+                .child(uid);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override

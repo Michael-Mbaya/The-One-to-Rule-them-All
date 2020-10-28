@@ -9,10 +9,10 @@ import com.example.lotrcharacters.ui.CharDetailFragment;
 
 import java.util.List;
 
-public class CharacterPagerAdapter extends FragmentPagerAdapter {
+public class CharPagerAdapter extends FragmentPagerAdapter {
     private List<Doc> mDocList;
 
-    public CharacterPagerAdapter(FragmentManager fm, int behavior, List<Doc> restaurants) {
+    public CharPagerAdapter(FragmentManager fm, int behavior, List<Doc> restaurants) {
         super(fm, behavior);
         mDocList = restaurants;
     }

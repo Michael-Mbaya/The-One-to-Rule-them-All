@@ -35,6 +35,7 @@ public class SavedCharListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_characters);
+        getSupportActionBar().setTitle("Saved Characters");
         ButterKnife.bind(this);
         //
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -54,19 +55,19 @@ public class SavedCharListActivity extends AppCompatActivity {
                         .setQuery(databaseReference, Doc.class)
                         .build();
 
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Doc, FirebaseCharViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull FirebaseCharViewHolder firebaseCharViewHolder, int position, @NonNull Doc doc) {
-                firebaseCharViewHolder.bindCharacter(doc);
-            }
+      mFirebaseAdapter = new FirebaseRecyclerAdapter<Doc, FirebaseCharViewHolder>(options) {
+        @Override
+        protected void onBindViewHolder(@NonNull FirebaseCharViewHolder firebaseCharViewHolder, int position, @NonNull Doc doc) {
+              firebaseCharViewHolder.bindCharacter(doc);
+          }
 
-            @NonNull
-            @Override
-            public FirebaseCharViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.character_list_item, parent, false);
-                return new FirebaseCharViewHolder(view);
-            }
-        };
+          @NonNull
+          @Override
+          public FirebaseCharViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+              View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.character_list_item, parent, false);
+              return new FirebaseCharViewHolder(view);
+          }
+      };
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mFirebaseAdapter);
