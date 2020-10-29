@@ -1,10 +1,14 @@
 
 package com.example.lotrcharacters.models;
 
+import com.google.firebase.database.Exclude;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import org.parceler.Parcel;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Parcel
 public class Doc {
@@ -175,6 +179,25 @@ public class Doc {
 
     public void setWikiUrl(String wikiUrl) {
         this.wikiUrl = wikiUrl;
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("birth", birth);
+        result.put("death", death);
+        result.put("gender", gender);
+        result.put("hair", hair);
+        result.put("height", height);
+        result.put("id", id);
+        result.put("name", name);
+        result.put("pushId", pushId);
+        result.put("race", race);
+        result.put("realm", realm);
+        result.put("spouse", spouse);
+        result.put("wikiUrl", wikiUrl);
+
+        return result;
     }
 
 }

@@ -13,4 +13,5 @@
 .externalNativeBuild
 .cxx
 
+*/ui/Toy.java
 #/gradle.properties
