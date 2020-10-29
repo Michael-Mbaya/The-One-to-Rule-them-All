@@ -12,6 +12,8 @@
 /captures
 .externalNativeBuild
 .cxx
+.idea
+
 
 */ui/Toy.java
 #/gradle.properties
