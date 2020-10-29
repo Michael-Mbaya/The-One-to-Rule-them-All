@@ -3,12 +3,12 @@ package com.example.lotrcharacters.adapters;
 import android.content.Context;
 import android.widget.ArrayAdapter;
 
-public class CharacterListArrayAdapter extends ArrayAdapter {
+public class CharListArrayAdapter extends ArrayAdapter {
     private Context mContext;
     private String[] mNames;
     private String[] mRaces;    // #JoynerLucas - I'm Not Racist
 
-    public CharacterListArrayAdapter(Context mContext, int resource, String[] mTracks, String[] mTrackArtists) {
+    public CharListArrayAdapter(Context mContext, int resource, String[] mTracks, String[] mTrackArtists) {
         super(mContext, resource);
         this.mContext = mContext;
         this.mNames = mTracks;

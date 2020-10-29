@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "297491082320",
+    "firebase_url": "https://lord-of-the-rings-f0637.firebaseio.com",
+    "project_id": "lord-of-the-rings-f0637",
+    "storage_bucket": "lord-of-the-rings-f0637.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297491082320:android:7af69de38aea4e3940b555",
+        "android_client_info": {
+          "package_name": "com.example.lotrcharacters"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297491082320-i45hfq6ikv322dr643mis626s9btlgpi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lotrcharacters",
+            "certificate_hash": "b2a5f3353873739652d9d14685e7d328041b6698"
+          }
+        },
+        {
+          "client_id": "297491082320-4tvaroaapfl8sbkbeg4bhdpjku4opeh2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChbtOhwjucyxrlM6ueJcKUBN_ApcCOug0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297491082320-4tvaroaapfl8sbkbeg4bhdpjku4opeh2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

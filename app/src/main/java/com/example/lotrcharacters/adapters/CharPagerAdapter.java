@@ -9,26 +9,26 @@ import com.example.lotrcharacters.ui.CharDetailFragment;
 
 import java.util.List;
 
-public class CharacterPagerAdapter extends FragmentPagerAdapter {
-    private List<Doc> mRestaurants;
+public class CharPagerAdapter extends FragmentPagerAdapter {
+    private List<Doc> mDocList;
 
-    public CharacterPagerAdapter(FragmentManager fm, int behavior, List<Doc> restaurants) {
+    public CharPagerAdapter(FragmentManager fm, int behavior, List<Doc> restaurants) {
         super(fm, behavior);
-        mRestaurants = restaurants;
+        mDocList = restaurants;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return CharDetailFragment.newInstance(mRestaurants.get(position));
+        return CharDetailFragment.newInstance(mDocList.get(position));
     }
 
     @Override
     public int getCount() {
-        return mRestaurants.size();
+        return mDocList.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mRestaurants.get(position).getName();
+        return mDocList.get(position).getName();
     }
 }

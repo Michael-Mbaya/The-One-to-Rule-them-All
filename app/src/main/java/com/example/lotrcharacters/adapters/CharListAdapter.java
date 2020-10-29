@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,31 +19,34 @@ import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdapter.CharacterViewHolder> {
+public class CharListAdapter extends RecyclerView.Adapter<CharListAdapter.CharacterViewHolder> implements Filterable {
 
 
     private List<Doc> mDocList;
+    private List<Doc> mDocListCopy;
     private Context mContext;
 
-    public CharacterListAdapter(Context context, List<Doc> docList) {
+    public CharListAdapter(Context context, List<Doc> docList) {
         mContext = context;
         mDocList = docList;
+        mDocListCopy = new ArrayList<>(mDocList);
     }
 
     @Override
-    public CharacterListAdapter.CharacterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CharListAdapter.CharacterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.character_list_item, parent, false);
         CharacterViewHolder viewHolder = new CharacterViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(CharacterListAdapter.CharacterViewHolder holder, int position) {
+    public void onBindViewHolder(CharListAdapter.CharacterViewHolder holder, int position) {
         holder.bindCharacter(mDocList.get(position));
     }
 
@@ -50,8 +55,45 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
         return mDocList.size();
     }
 
+    //Filterable method implementation
+    @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+    private Filter exampleFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Doc> filteredList = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0){
+                filteredList.addAll(mDocListCopy);
+            }else{
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for(Doc item:mDocListCopy){
+                    if(item.getName().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+//            return null;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            mDocList.clear();
+            mDocList.addAll((List)results.values);
+            notifyDataSetChanged();
+
+        }
+    };
+    //
+
     public class CharacterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @BindView(R.id.characterImageView) ImageView mCharPic;
+        @BindView(R.id.charImageView) ImageView mCharPic;
         @BindView(R.id.charNameTextView) TextView mName;
         @BindView(R.id.raceTextView) TextView mRace;
         @BindView(R.id.wikiTextView) TextView mWiki;
@@ -78,7 +120,7 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, CharacterDetailActivity.class);
             intent.putExtra("position", itemPosition);
-            intent.putExtra("character", Parcels.wrap(mDocList));
+            intent.putExtra("characters", Parcels.wrap(mDocList));
             mContext.startActivity(intent);
         }
     }

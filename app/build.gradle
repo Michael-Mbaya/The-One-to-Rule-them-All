@@ -19,6 +19,19 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/notice.txt'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -56,4 +69,16 @@ dependencies {
 //    Using Parceler for Android Parcelable Interface
     implementation 'org.parceler:parceler-api:1.1.13'
     annotationProcessor 'org.parceler:parceler:1.1.13'
+    //Add firebase SDK
+    implementation 'com.google.firebase:firebase-core:17.5.1'
+    //Realtime Database for firebase data saving
+    implementation 'com.google.firebase:firebase-database:19.5.0'
+    // FirebaseUI for Firebase Realtime Database
+    //  implementation 'com.firebaseui:firebase-ui-database:4.3.1'
+    // The latest version of firebase-ui causes compile errors
+    implementation 'com.firebaseui:firebase-ui-database:3.3.1'
+    //Firebase User Authentication
+    implementation 'com.google.firebase:firebase-auth:19.4.0'
 }
+//Add this line also with the Firebase dependencies
+apply plugin: 'com.google.gms.google-services'

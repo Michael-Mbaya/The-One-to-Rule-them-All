@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.lotrcharacters">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,22 +11,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".ui.SavedCharListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.lotrcharacters.ui.MainActivity" />
+        </activity>
+        <activity android:name=".ui.LoginActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.CreateAccountActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar" ></activity>
+        <activity android:name=".ui.MainActivity"> <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
+
+        </activity>
         <activity android:name=".ui.CharactersListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.lotrcharacters.ui.MainActivity">
-            </meta-data>
+                android:value="com.example.lotrcharacters.ui.MainActivity" />
         </activity>
-        <activity android:name=".ui.CharacterDetailActivity">
-
-        </activity>
+        <activity android:name=".ui.CharacterDetailActivity" />
     </application>
 
 </manifest>
