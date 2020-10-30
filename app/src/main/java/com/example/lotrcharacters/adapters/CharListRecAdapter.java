@@ -25,28 +25,28 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CharListAdapter extends RecyclerView.Adapter<CharListAdapter.CharacterViewHolder> implements Filterable {
+public class CharListRecAdapter extends RecyclerView.Adapter<CharListRecAdapter.CharacterViewHolder> implements Filterable {
 
 
     private List<Doc> mDocList;
     private List<Doc> mDocListCopy;
     private Context mContext;
 
-    public CharListAdapter(Context context, List<Doc> docList) {
+    public CharListRecAdapter(Context context, List<Doc> docList) {
         mContext = context;
         mDocList = docList;
         mDocListCopy = new ArrayList<>(mDocList);
     }
 
     @Override
-    public CharListAdapter.CharacterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CharListRecAdapter.CharacterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.character_list_item, parent, false);
         CharacterViewHolder viewHolder = new CharacterViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(CharListAdapter.CharacterViewHolder holder, int position) {
+    public void onBindViewHolder(CharListRecAdapter.CharacterViewHolder holder, int position) {
         holder.bindCharacter(mDocList.get(position));
     }
 

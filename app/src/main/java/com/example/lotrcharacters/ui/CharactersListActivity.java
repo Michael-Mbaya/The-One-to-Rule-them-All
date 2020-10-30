@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lotrcharacters.R;
-import com.example.lotrcharacters.adapters.CharListAdapter;
+import com.example.lotrcharacters.adapters.CharListRecAdapter;
 import com.example.lotrcharacters.models.Doc;
 import com.example.lotrcharacters.models.MyPreciousResponse;
 import com.example.lotrcharacters.network.LotrAPI;
@@ -39,7 +39,7 @@ public class CharactersListActivity extends AppCompatActivity {
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
 //    @BindView(R.id.welcomeTextView) TextView mWelcomeName;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
-    private CharListAdapter mAdapter;
+    private CharListRecAdapter mAdapter;
 //
 
     @Override
@@ -72,7 +72,7 @@ public class CharactersListActivity extends AppCompatActivity {
                     }
 
 
-                    mAdapter = new CharListAdapter(CharactersListActivity.this, newList);
+                    mAdapter = new CharListRecAdapter(CharactersListActivity.this, newList);
                     mRecyclerView.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager =
                             new LinearLayoutManager(CharactersListActivity.this);

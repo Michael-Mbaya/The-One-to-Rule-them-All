@@ -5,24 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import com.example.lotrcharacters.Constants;
 import com.example.lotrcharacters.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -117,8 +108,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             //
             if(v==msaved){
-                Intent savedIntent = new Intent(MainActivity.this,SavedCharListActivity.class);
-                startActivity(savedIntent);
+//                Intent savedIntent = new Intent(MainActivity.this,SavedCharListActivity.class);
+//                Intent intent2 = new Intent(MainActivity.this,SavedList_Try.class);
+                Intent intent3 = new Intent(MainActivity.this, SavedCharList.class);
+//                startActivity(savedIntent);
+//                startActivity(intent2);
+                startActivity(intent3);
             }
 
         }

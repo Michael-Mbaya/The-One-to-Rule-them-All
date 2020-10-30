@@ -85,6 +85,9 @@ public class Doc {
         this.wikiUrl = wikiUrl;
     }
 
+    final String unknown = "Unknown";
+    final String nonYet = "No wiki fan page yet";
+
     public String getPushId() {
         return pushId;
     }
@@ -102,7 +105,11 @@ public class Doc {
     }
 
     public String getHeight() {
-        return height;
+        if(height==null|| height.equals("")){
+            return unknown;
+        }else {
+            return height;
+        }
     }
 
     public void setHeight(String height) {
@@ -110,7 +117,11 @@ public class Doc {
     }
 
     public String getRace() {
-        return race;
+        if(race==null|| race.equals("")){
+            return unknown;
+        }else {
+            return race;
+        }
     }
 
     public void setRace(String race) {
@@ -118,7 +129,11 @@ public class Doc {
     }
 
     public String getGender() {
-        return gender;
+        if(gender==null|| gender.equals("")){
+            return unknown;
+        }else {
+            return gender;
+        }
     }
 
     public void setGender(String gender) {
@@ -126,7 +141,11 @@ public class Doc {
     }
 
     public String getBirth() {
-        return birth;
+        if(birth==null|| birth.equals("")){
+            return unknown;
+        }else {
+            return birth;
+        }
     }
 
     public void setBirth(String birth) {
@@ -134,7 +153,11 @@ public class Doc {
     }
 
     public String getSpouse() {
-        return spouse;
+        if(spouse==null|| spouse.equals("")){
+            return unknown;
+        }else {
+            return spouse;
+        }
     }
 
     public void setSpouse(String spouse) {
@@ -142,7 +165,11 @@ public class Doc {
     }
 
     public String getDeath() {
-        return death;
+        if(death==null|| death.equals("")){
+            return unknown;
+        }else {
+            return death;
+        }
     }
 
     public void setDeath(String death) {
@@ -150,7 +177,11 @@ public class Doc {
     }
 
     public String getRealm() {
-        return realm;
+        if(realm==null|| realm.equals("")){
+            return unknown;
+        }else {
+            return realm;
+        }
     }
 
     public void setRealm(String realm) {
@@ -158,7 +189,11 @@ public class Doc {
     }
 
     public String getHair() {
-        return hair;
+        if(hair==null|| hair.equals("")){
+            return unknown;
+        }else {
+            return hair;
+        }
     }
 
     public void setHair(String hair) {
@@ -166,7 +201,11 @@ public class Doc {
     }
 
     public String getName() {
-        return name;
+        if(name==null|| name.equals("")){
+            return unknown;
+        }else {
+            return name;
+        }
     }
 
     public void setName(String name) {
@@ -174,7 +213,11 @@ public class Doc {
     }
 
     public String getWikiUrl() {
-        return wikiUrl;
+        if(wikiUrl==null|| wikiUrl.equals("")){
+            return nonYet;
+        }else {
+            return wikiUrl;
+        }
     }
 
     public void setWikiUrl(String wikiUrl) {

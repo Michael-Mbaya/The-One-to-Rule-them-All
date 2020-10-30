@@ -20,45 +20,32 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-public class FirebaseCharViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    View v;
     Context mContext;
+    public TextView nameView;
+    public TextView raceView;
+    public TextView wikiView;
+    public ImageView image;
 
-    public FirebaseCharViewHolder(View itemView) {
+    public MyViewHolder(@NonNull View itemView) {
         super(itemView);
-        v = itemView;
         mContext = itemView.getContext();
         itemView.setOnClickListener(this);
-    }
 
-    public void bindCharacter(Doc character) {
-
-        ImageView charImageView = (ImageView) v.findViewById(R.id.charImageView);
-        TextView nameTextView = (TextView) v.findViewById(R.id.charNameTextView);
-        TextView raceTextView = (TextView) v.findViewById(R.id.raceTextView);
-//        TextView realmTextView = (TextView) v.findViewById(R.id.realmTextView);
-//        TextView birthTextView = (TextView) v.findViewById(R.id.birthTextView);
-//        TextView deathTextView = (TextView) v.findViewById(R.id.deathTextView);
-        TextView wikiTextView = (TextView) v.findViewById(R.id.wikiTextView);
-
-        Picasso.get().load(R.drawable.frodo_ring).into(charImageView);
-        nameTextView.setText(character.getName());
-        raceTextView.setText(character.getRace());
-//        realmTextView.setText(character.getRealm());
-//        birthTextView.setText(character.getBirth());
-//        deathTextView.setText(character.getDeath());
-        wikiTextView.setText(character.getWikiUrl());
+        nameView = itemView.findViewById(R.id.charNameTextView);
+        raceView = itemView.findViewById(R.id.raceTextView);
+        wikiView = itemView.findViewById(R.id.wikiTextView);
+        image = itemView.findViewById(R.id.charImageView);
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View v) {
         final ArrayList<Doc> docs = new ArrayList<>();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
@@ -88,5 +75,4 @@ public class FirebaseCharViewHolder extends RecyclerView.ViewHolder implements V
             }
         });
     }
-
 }
