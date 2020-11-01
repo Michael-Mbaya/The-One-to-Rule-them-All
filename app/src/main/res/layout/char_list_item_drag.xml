@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/blackest"
+    android:orientation="horizontal"
+    android:paddingTop="1dp"
+    android:paddingBottom="1.5dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/charImageDrag"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/frodo_ring" />
+
+        <ImageView
+            android:id="@+id/dragIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@id/charImageDrag"
+            android:layout_alignBottom="@id/charImageDrag"
+            android:gravity="bottom|left"
+            android:src="@drawable/ic_baseline_reorder_24" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/charNameDrag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/droid_serif"
+            android:gravity="center"
+            android:text="Character Name"
+            android:textColor="@color/brownBrewsdog"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/charRaceDrag"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center"
+            android:fontFamily="@font/smartwatch"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Race Type"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/charWikiDrag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="#FFFFFF"
+            android:fontFamily="@font/droid_sans"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:text="Wiki Url"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+</LinearLayout>

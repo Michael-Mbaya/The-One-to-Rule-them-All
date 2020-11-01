@@ -40,7 +40,7 @@ public class CharListRecAdapter extends RecyclerView.Adapter<CharListRecAdapter.
 
     @Override
     public CharListRecAdapter.CharacterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.character_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.char_list_item, parent, false);
         CharacterViewHolder viewHolder = new CharacterViewHolder(view);
         return viewHolder;
     }
