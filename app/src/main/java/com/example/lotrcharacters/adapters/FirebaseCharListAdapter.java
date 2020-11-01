@@ -1,6 +1,7 @@
 package com.example.lotrcharacters.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.lotrcharacters.R;
 import com.example.lotrcharacters.models.Doc;
+import com.example.lotrcharacters.ui.DetailActivity;
 import com.example.lotrcharacters.util.ItemTouchHelperAdapter;
 import com.example.lotrcharacters.util.OnStartDragListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -18,6 +20,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -73,6 +77,7 @@ public class FirebaseCharListAdapter extends FirebaseRecyclerAdapter<Doc, MyView
     @Override
     protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Doc model) {
         holder.bindDoc(model);
+        //
         holder.image.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -82,6 +87,17 @@ public class FirebaseCharListAdapter extends FirebaseRecyclerAdapter<Doc, MyView
                 return false;
             }
         });
+        //
+        holder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, DetailActivity.class);
+                intent.putExtra("position", holder.getAdapterPosition());
+                intent.putExtra("characters", Parcels.wrap(mCharacters));
+                mContext.startActivity(intent);
+            }
+        });
+        //
     }
 
     @NonNull

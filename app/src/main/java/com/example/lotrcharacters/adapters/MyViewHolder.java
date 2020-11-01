@@ -26,31 +26,26 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-
+public class MyViewHolder extends RecyclerView.ViewHolder{
+    //
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 200;
+    //
     View mView;
     Context mContext;
-//    public TextView nameView;
-//    public TextView raceView;
-//    public TextView wikiView;
     public ImageView image;
 
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
+//        itemView.setOnClickListener(this);
     }
         public void bindDoc (Doc doc) {
             image = mView.findViewById(R.id.charImageDrag);
             TextView nameView = mView.findViewById(R.id.charNameDrag);
             TextView raceView = mView.findViewById(R.id.charRaceDrag);
             TextView wikiView = mView.findViewById(R.id.charWikiDrag);
-//            image = itemView.findViewById(R.id.charImageDrag);
-//        nameView = itemView.findViewById(R.id.charNameTextView);
-//        raceView = itemView.findViewById(R.id.raceTextView);
-//        wikiView = itemView.findViewById(R.id.wikiTextView);
-//        image = itemView.findViewById(R.id.charImageView);
 
             nameView.setText(doc.getName());
             raceView.setText(doc.getRace());
@@ -59,36 +54,5 @@ public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClic
 
     }
 
-    @Override
-    public void onClick(View v) {
-        final ArrayList<Doc> docs = new ArrayList<>();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-        DatabaseReference ref = FirebaseDatabase
-                .getInstance()
-                .getReference(Constants.FIREBASE_CHILD_CHARACTERS)
-                .child(uid);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    docs.add(snapshot.getValue(Doc.class));
-                }
-
-                int itemPosition = getLayoutPosition();
-
-                Intent intent = new Intent(mContext, DetailActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("characters", Parcels.wrap(docs));
-
-                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-    }
 
 }

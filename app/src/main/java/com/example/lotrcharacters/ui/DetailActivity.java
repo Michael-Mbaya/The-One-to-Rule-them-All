@@ -29,7 +29,7 @@ public class DetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mDocList = Parcels.unwrap(getIntent().getParcelableExtra("characters"));
-        int startingPosition = getIntent().getIntExtra("positions", 0);
+        int startingPosition = getIntent().getIntExtra("position", 0);
 
         adapterViewPager = new CharPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, mDocList);
         mViewPager.setAdapter(adapterViewPager);
