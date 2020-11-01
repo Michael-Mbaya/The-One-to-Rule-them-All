@@ -1,7 +1,10 @@
 package com.example.lotrcharacters.adapters;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +16,8 @@ import com.example.lotrcharacters.Constants;
 import com.example.lotrcharacters.R;
 import com.example.lotrcharacters.models.Doc;
 import com.example.lotrcharacters.ui.DetailActivity;
+import com.example.lotrcharacters.util.ItemTouchHelperAdapter;
+import com.example.lotrcharacters.util.ItemTouchHelperViewHolder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +31,7 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-public class MyViewHolder extends RecyclerView.ViewHolder{
+public class MyViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
     //
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
@@ -54,5 +59,25 @@ public class MyViewHolder extends RecyclerView.ViewHolder{
 
     }
 
+
+    @Override
+    public void onItemSelected() {
+        Log.d("Animation", "onItemSelected");
+        // we will add animations here
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+                R.animator.drag_scale_on);
+        set.setTarget(itemView);
+        set.start();
+    }
+
+    @Override
+    public void onItemClear() {
+        Log.d("Animation", "onItemClear");
+        // we will add animations here
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+                R.animator.drag_scale_off);
+        set.setTarget(itemView);
+        set.start();
+    }
 
 }
