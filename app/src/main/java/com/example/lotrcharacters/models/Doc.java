@@ -122,6 +122,7 @@ public class Doc {
         }else {
             return race;
         }
+//        return race;
     }
 
     public void setRace(String race) {

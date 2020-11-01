@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lotrcharacters.R;
 import com.example.lotrcharacters.models.Doc;
-import com.example.lotrcharacters.ui.CharacterDetailActivity;
+import com.example.lotrcharacters.ui.DetailActivity;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -118,7 +118,7 @@ public class CharListRecAdapter extends RecyclerView.Adapter<CharListRecAdapter.
         public void onClick(View v) {
 
             int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, CharacterDetailActivity.class);
+            Intent intent = new Intent(mContext, DetailActivity.class);
             intent.putExtra("position", itemPosition);
             intent.putExtra("characters", Parcels.wrap(mDocList));
             mContext.startActivity(intent);

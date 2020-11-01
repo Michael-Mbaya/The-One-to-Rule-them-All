@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.lotrcharacters.Constants;
 import com.example.lotrcharacters.R;
 import com.example.lotrcharacters.models.Doc;
-import com.example.lotrcharacters.ui.CharacterDetailActivity;
+import com.example.lotrcharacters.ui.DetailActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -63,7 +63,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClic
 
                 int itemPosition = getLayoutPosition();
 
-                Intent intent = new Intent(mContext, CharacterDetailActivity.class);
+                Intent intent = new Intent(mContext, DetailActivity.class);
                 intent.putExtra("position", itemPosition + "");
                 intent.putExtra("characters", Parcels.wrap(docs));
 

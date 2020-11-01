@@ -21,10 +21,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SavedCharList extends AppCompatActivity {
+public class SavedListActivity extends AppCompatActivity {
     private static final String TAG = "Saved Characters!!!";
 
-    DatabaseReference reference;
+    private DatabaseReference reference;
     private FirebaseRecyclerOptions<Doc> options;
     private FirebaseRecyclerAdapter<Doc, MyViewHolder> adapter;
     private RecyclerView recyclerView;
@@ -32,7 +32,7 @@ public class SavedCharList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_saved_char);
+        setContentView(R.layout.activity_saved);
         //
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
@@ -43,7 +43,6 @@ public class SavedCharList extends AppCompatActivity {
 
 //        reference = FirebaseDatabase.getInstance().getReference().child("characters");
         reference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CHARACTERS).child(uid);
-//                        .getReference(Constants.FIREBASE_CHILD_CHARACTERS).child(uid);
 
         options = new FirebaseRecyclerOptions.Builder<Doc>()
                 .setQuery(reference,Doc.class).build();
@@ -54,7 +53,6 @@ public class SavedCharList extends AppCompatActivity {
                 holder.raceView.setText(model.getRace());
                 holder.wikiView.setText(model.getWikiUrl());
                 holder.image.setImageResource(R.drawable.lotr_most);
-//                Picasso.get().load(R.drawable.lotr_most).into(mCharPic)
             }
 
             @NonNull

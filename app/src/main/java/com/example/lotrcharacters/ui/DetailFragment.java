@@ -26,7 +26,7 @@ import com.example.lotrcharacters.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CharDetailFragment extends Fragment implements View.OnClickListener{
+public class DetailFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.eyeSauronImage) ImageView mImge;
     @BindView(R.id.nameTextView) TextView mName;
     @BindView(R.id.raceTextView) TextView mRace;
@@ -38,12 +38,12 @@ public class CharDetailFragment extends Fragment implements View.OnClickListener
 
     private Doc mCharacter;
 
-    public CharDetailFragment() {
+    public DetailFragment() {
         // Required empty public constructor
     }
 
-    public static CharDetailFragment newInstance(Doc character) {
-        CharDetailFragment charDetailFragment = new CharDetailFragment();
+    public static DetailFragment newInstance(Doc character) {
+        DetailFragment charDetailFragment = new DetailFragment();
         Bundle args = new Bundle();
         args.putParcelable("character", Parcels.wrap(character));
         charDetailFragment.setArguments(args);
@@ -116,10 +116,10 @@ public class CharDetailFragment extends Fragment implements View.OnClickListener
 //
 ///**
 // * A simple {@link Fragment} subclass.
-// * Use the {@link CharDetailFragment#newInstance} factory method to
+// * Use the {@link DetailFragment#newInstance} factory method to
 // * create an instance of this fragment.
 // */
-//public class CharDetailFragment extends Fragment {
+//public class DetailFragment extends Fragment {
 //
 //    // TODO: Rename parameter arguments, choose names that match
 //    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -130,7 +130,7 @@ public class CharDetailFragment extends Fragment implements View.OnClickListener
 //    private String mParam1;
 //    private String mParam2;
 //
-//    public CharDetailFragment() {
+//    public DetailFragment() {
 //        // Required empty public constructor
 //    }
 //
@@ -140,11 +140,11 @@ public class CharDetailFragment extends Fragment implements View.OnClickListener
 //     *
 //     * @param param1 Parameter 1.
 //     * @param param2 Parameter 2.
-//     * @return A new instance of fragment CharDetailFragment.
+//     * @return A new instance of fragment DetailFragment.
 //     */
 //    // TODO: Rename and change types and number of parameters
-//    public static CharDetailFragment newInstance(String param1, String param2) {
-//        CharDetailFragment fragment = new CharDetailFragment();
+//    public static DetailFragment newInstance(String param1, String param2) {
+//        DetailFragment fragment = new DetailFragment();
 //        Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
 //        args.putString(ARG_PARAM2, param2);

@@ -21,42 +21,15 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = MainActivity.class.getSimpleName();
-    //    private SharedPreferences mSharedPreferences;
-//    private SharedPreferences.Editor mEditor;
-//    private DatabaseReference mNamesCalledReference;
-//    private ValueEventListener mNamesCalledReferenceListener;
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-//    @BindView(R.id.nameEditText) EditText mNameToCall;
     @BindView(R.id.nextActButton) Button mNextActivity;
     @BindView(R.id.savedButton) Button msaved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-//        mNamesCalledReference = FirebaseDatabase
-//                .getInstance()
-//                .getReference()
-//                .child(Constants.FIREBASE_CHILD_NAMES); //pinpoint names node
-//
-//        mNamesCalledReferenceListener = mNamesCalledReference.addValueEventListener(new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot namesSnapshot : dataSnapshot.getChildren()) {
-//                    String location = namesSnapshot.getValue().toString();
-//                    Log.d("Names updated", "New Name: " + location);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//
-//        });
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -74,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         };
 
-        //scklistener onclicklistener on a view
         mNextActivity.setOnClickListener(this);
         msaved.setOnClickListener(this);
 
@@ -87,50 +59,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onClick (View v){
             if (v == mNextActivity) {
-                //intent and toasts
-//            if (mNameToCall.getText().toString().isEmpty()) {
-//                Toast.makeText(MainActivity.this, "Text is Required", Toast.LENGTH_LONG).show();
-//                mNameToCall.setError("Text is Required");
-//                Toast.makeText(MainActivity.this, "Text is Required", Toast.LENGTH_LONG).show();
-//            } else {
-//                String myNameIs = mNameToCall.getText().toString();
-//                saveLocationToFirebase(myNameIs);
-                //shared pref
-//                if(!(myNameIs).equals("")) {
-//                addToSharedPreferences(myNameIs);
-//            }
-
-                //
                 Intent intent = new Intent(MainActivity.this, CharactersListActivity.class);
-//                intent.putExtra("myName", myNameIs);
                 startActivity(intent);
-//                Toast.makeText(MainActivity.this, "Welcome " + myNameIs + "!", Toast.LENGTH_LONG).show();
+//                Toast.makeText(MainActivity.this, "Welcome!!!", Toast.LENGTH_LONG).show();
             }
             //
             if(v==msaved){
-//                Intent savedIntent = new Intent(MainActivity.this,SavedCharListActivity.class);
-//                Intent intent2 = new Intent(MainActivity.this,SavedList_Try.class);
-                Intent intent3 = new Intent(MainActivity.this, SavedCharList.class);
-//                startActivity(savedIntent);
-//                startActivity(intent2);
-                startActivity(intent3);
+                Intent savedIntent = new Intent(MainActivity.this, SavedListActivity.class);
+                startActivity(savedIntent);
             }
 
         }
-
-//        public void saveLocationToFirebase (String names){
-//            mNamesCalledReference.push().setValue(names);
-//        }
-
-//    @Override
-//    protected void onDestroy() {
-//        //    defined in 'top level' of activity, not nested within another block.
-//        //    code here is executed when the user quits the activity.
-//        super.onDestroy();
-//        mNamesCalledReference.removeEventListener(mNamesCalledReferenceListener);
-////        Log.d("On Destroy","Data change Listener Destroyed");
-//    }
-
     //inflate menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -157,15 +96,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
         finish();
     }
-//    private void addToSharedPreferences(String name) {
-//            mEditor.putString(Constants.PREFERENCES_NAME_KEY, name).apply();
-//    }
+    //AuthStateListener start
     @Override
     public void onStart(){
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
     }
-
+    //AuthStateListener end
     @Override
     public void onStop(){
         super.onStop();
