@@ -48,6 +48,8 @@ public class Doc {
     public String wikiUrl;
     //pushId
     private String pushId;
+    //index
+    String index;
 
     /**
      * No args constructor for use in serialization
@@ -83,10 +85,21 @@ public class Doc {
         this.hair = hair;
         this.name = name;
         this.wikiUrl = wikiUrl;
+        //
+        this.index = "not_specified";
+        //
     }
 
     final String unknown = "Unknown";
     final String nonYet = "No wiki fan page yet";
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
+    }
 
     public String getPushId() {
         return pushId;
